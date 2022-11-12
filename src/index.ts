@@ -2,7 +2,7 @@ import express from 'express'
 import { sequelize } from './database'
 import { User } from './models/user'
 
-sequelize.sync({ force: true }).then(() => console.log('DB connected.'))
+sequelize.sync().then(() => console.log('DB connected.'))
 
 
 const app = express()
@@ -29,9 +29,9 @@ app.get('/users/:id', async (req, res) => {
 // edit
 app.put('/users/:id', async (req, res) => {
     const id = req.params.id;
-    const user = await User.findOne({ where: { id: id } });
-    user.lastName = req.body.lastName;
-    await user.save();
+    const user = await User.findOne({ where: { id: id } })
+    user!.lastName = req.body.lastName;
+    await user!.save();
     res.send('updated');
 })
 

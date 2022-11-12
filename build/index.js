@@ -42,7 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var database_1 = require("./database");
 var user_1 = require("./models/user");
-database_1.sequelize.sync({ force: true }).then(function () { return console.log('DB connected.'); });
+database_1.sequelize.sync().then(function () { return console.log('DB connected.'); });
 var app = (0, express_1.default)();
 app.use(express_1.default.json());
 // post
