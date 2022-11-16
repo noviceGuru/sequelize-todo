@@ -7,17 +7,15 @@ export const User = sequelize.define('User', {
         allowNull: false
     },
     lastName: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull : false,
     },
     username: {
         type: DataTypes.STRING
     },
     role: {
         type: DataTypes.STRING
-    },
-    // isAdmin: {
-    //     type: DataTypes.TINYINT
-    // },
+    }
 }, {
     tableName: 'Users',
     timestamps: false

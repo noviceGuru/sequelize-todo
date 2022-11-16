@@ -1,9 +1,26 @@
 import { Express } from "express"
 
-export const putOne = (User: any, app : Express) => {
+export const putOne = (User: any, app: Express) => {
     app.put('/users/:id', async (req, res) => {
-        const id = req.params.id;
-        const user = await User.update({ lastName: req.body.lastName }, { where: { id: id } })
-        res.send(`updated ${user}`);
+        try {
+            const id = req.params.id;
+            const updatingData = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                username: req.body.username,
+                role: req.body.role
+            }
+
+            if (!updatingData.firstName) throw { type: 'validation', message: "First name can't be null" }
+            if (!updatingData.lastName) throw { type: 'validation', message: "Last name can't be null" }
+
+            await User.update(updatingData, { where: { id: id } })
+
+            res.status(200).send(`updated user with id ${req.params.id}`)
+        } catch (error: any) {
+            error.type === 'validation' ?
+                res.status(400).send({ error: error }) :
+                res.status(500).send({ error: 'Sorry, something went wrong.' })
+        }
     })
 }

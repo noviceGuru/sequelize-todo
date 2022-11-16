@@ -9,17 +9,15 @@ exports.User = database_1.sequelize.define('User', {
         allowNull: false
     },
     lastName: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     username: {
         type: sequelize_1.DataTypes.STRING
     },
     role: {
         type: sequelize_1.DataTypes.STRING
-    },
-    // isAdmin: {
-    //     type: DataTypes.TINYINT
-    // },
+    }
 }, {
     tableName: 'Users',
     timestamps: false
