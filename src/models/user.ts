@@ -9,9 +9,12 @@ export const User = sequelize.define('User', {
     lastName: {
         type: DataTypes.STRING
     },
-    // username: {
-    //     type: DataTypes.STRING
-    // },
+    username: {
+        type: DataTypes.STRING
+    },
+    role: {
+        type: DataTypes.STRING
+    },
     // isAdmin: {
     //     type: DataTypes.TINYINT
     // },

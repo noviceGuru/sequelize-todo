@@ -1,45 +1,28 @@
 import express from 'express'
 import { sequelize } from './database'
 import { User } from './models/user'
+import { postOne, getOne, getAll, putOne, deleteOne } from './requests'
 
-sequelize.sync().then(() => console.log('DB connected.'))
+sequelize.sync({ alter: true }).then(() => console.log('DB connected.'))
 
 
 const app = express()
 app.use(express.json());
 
 // post
-app.post('/users', async (req, res) => {
-    await User.create(req.body)
-    res.send('success')
-})
+postOne(User, app)
 
 // get all
-app.get('/users', async (req, res) => {
-    const users = await User.findAll()
-    res.send(users)
-})
+getAll(User, app)
 
 // get one
-app.get('/users/:id', async (req, res) => {
-    const user = await User.findOne({ where: { id: req.params.id } })
-    res.send(user)
-})
+getOne(User, app)
 
 // edit
-app.put('/users/:id', async (req, res) => {
-    const id = req.params.id;
-    const user = await User.findOne({ where: { id: id } })
-    user!.lastName = req.body.lastName;
-    await user!.save();
-    res.send('updated');
-})
+putOne(User, app)
 
 // delete
-app.delete('/users/:id', async (req, res) => {
-    await User.destroy({ where: { id: req.params.id } })
-    res.send(`User with id ${req.params.id} was deleted.`)
-})
+deleteOne(User, app)
 
 // run the server
 app.listen(3000, () => {

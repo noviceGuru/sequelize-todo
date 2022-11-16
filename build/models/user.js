@@ -11,9 +11,12 @@ exports.User = database_1.sequelize.define('User', {
     lastName: {
         type: sequelize_1.DataTypes.STRING
     },
-    // username: {
-    //     type: DataTypes.STRING
-    // },
+    username: {
+        type: sequelize_1.DataTypes.STRING
+    },
+    role: {
+        type: sequelize_1.DataTypes.STRING
+    },
     // isAdmin: {
     //     type: DataTypes.TINYINT
     // },
