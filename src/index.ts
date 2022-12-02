@@ -10,6 +10,7 @@ sequelize.sync({ alter: true }).then(() => console.log('DB connected.'))
 const app = express()
 app.use(express.json());
 
+// Crud requests for each model
 models.forEach(model => crudRequests(model, app))
 
 // run the server
