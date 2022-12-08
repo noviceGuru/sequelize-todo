@@ -17,6 +17,9 @@ exports.User = database_1.sequelize.define('User', {
     },
     role: {
         type: sequelize_1.DataTypes.STRING
+    },
+    passowrd: {
+        type: sequelize_1.DataTypes.STRING
     }
 }, {
     tableName: 'Users',

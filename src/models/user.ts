@@ -15,6 +15,9 @@ export const User = sequelize.define('User', {
     },
     role: {
         type: DataTypes.STRING
+    },
+    passowrd:{
+        type: DataTypes.STRING
     }
 }, {
     tableName: 'Users',
