@@ -6,16 +6,18 @@ export interface User {
 }
 
 export interface Session {
-    id: number;
+    id?: number;
     dateCreated: number;
     username: string;
+    firstName?: string
+    lastName?: string
     /**
      * Timestamp indicating when the session was created, in Unix milliseconds.
      */
     issued: number;
     /**
      * Timestamp indicating when the session should expire, in Unix milliseconds.
-     */ 
+     */
     expires: number;
 }
 
@@ -32,15 +34,15 @@ export interface EncodeResult {
 
 export type DecodeResult =
     | {
-          type: "valid";
-          session: Session;
-      }
+        type: "valid";
+        session: Session;
+    }
     | {
-          type: "integrity-error";
-      }
+        type: "integrity-error";
+    }
     | {
-          type: "invalid-token";
-      };
+        type: "invalid-token";
+    };
 
 export type ExpirationStatus = "expired" | "active" | "grace";
 
