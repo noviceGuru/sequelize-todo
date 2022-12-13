@@ -6,7 +6,7 @@ export const deleteOne = (Model: any, app: Express) => {
             const response = await Model.destroy({ where: { id: req.params.id } })
             response ?
                 res.status(200).send(`${Model.name} with id ${req.params.id} was deleted.`) :
-                res.status(400).send(`Did not find the User.`)
+                res.status(400).send(`Did not find the ${Model.name}.`)
         } catch (error) {
             res.status(500).send('Sorry, something went wrong' + error)
         }
