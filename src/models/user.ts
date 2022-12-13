@@ -1,22 +1,23 @@
-import { DataTypes } from "sequelize"
+import { DataTypes, UUID, UUIDV4 } from "sequelize"
 import { sequelize } from "../database"
 
 export const User = sequelize.define('User', {
+    id: {
+        type: UUID,
+        defaultValue: UUIDV4,
+        allowNull: false,
+        primaryKey: true
+    },
     firstName: {
         type: DataTypes.STRING,
-        allowNull: false
     },
     lastName: {
         type: DataTypes.STRING,
-        allowNull : false,
     },
     username: {
         type: DataTypes.STRING
     },
-    role: {
-        type: DataTypes.STRING
-    },
-    password:{
+    password: {
         type: DataTypes.STRING
     }
 }, {

@@ -20,10 +20,7 @@ signUp(app)
 signIn(app)
 
 getAll(User, app)
-deleteOne(User,app)
-// Crud requests for each model
-// models.forEach(model => crudRequests(model, app))
-
+deleteOne(User, app)
 
 // Crud tasks
 crudRequests(Task, app)
