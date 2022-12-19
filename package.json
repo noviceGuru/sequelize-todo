@@ -4,8 +4,7 @@
   "description": "an exercise with sequelize",
   "main": "index.js",
   "scripts": {
-    "start": "bash startDevServer.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --watch ./build/index.js",
   },
   "keywords": [
     "exercise",

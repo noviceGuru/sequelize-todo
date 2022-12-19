@@ -55,7 +55,10 @@ export const requireJwtMiddleware = (request: Request, response: Response, next:
         ...response.locals,
         session: session
     }
-
     //Request has a valid or renewed session. Call next to continue to the authenticated route handler
+    //Also the user id is put in the request to be used for the other calls.
+
+    request.body.UserId = session.id
+    // request.body.userId = "66608b89-6183-415a-a1c9-82609c416147"
     next()
 }

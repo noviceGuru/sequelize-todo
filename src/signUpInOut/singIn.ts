@@ -20,6 +20,7 @@ export const signIn = (app: Express) => {
                 const expires = issued + fifteenMinutesInMs
 
                 let newSession = {
+                    id : user.id,
                     username: user.username,
                     dateCreated: Date.now(),
                     firstName: user.firstName,

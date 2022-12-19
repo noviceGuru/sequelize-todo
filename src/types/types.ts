@@ -3,12 +3,13 @@ export interface User {
     dateCreated: number;
     username: string;
     password: string;
+    Tasks?: Array<any>
 }
 
 export interface Session {
-    id?: number;
-    dateCreated: number;
-    username: string;
+    id?: number | string
+    dateCreated: number
+    username: string
     firstName?: string
     lastName?: string
     /**
