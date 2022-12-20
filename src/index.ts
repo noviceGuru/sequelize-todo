@@ -1,10 +1,7 @@
 import express from 'express'
 import { sequelize } from './database'
 
-import { User } from './models/user'
 import { signUp } from './signUpInOut/signUp'
-import { getAll } from './crudRequests/get'
-import { deleteOne } from './crudRequests/delete'
 import { signIn } from './signUpInOut/singIn'
 import { getAllTasks } from './tasksRequests/getAllTasks'
 import { associateUsersAndTasks } from './associations'
@@ -13,6 +10,7 @@ import { createATask } from './tasksRequests/createATask'
 import { editATask } from './tasksRequests/editATask'
 import { deleteMultipleTasks, deleteOneTask } from './tasksRequests/deleteTask'
 import { editUsersCredentials } from './signUpInOut/editOneUser'
+import { deleteOneUser } from './signUpInOut/deleteOneUser'
 
 const app = express()
 app.use(express.json())
@@ -33,10 +31,9 @@ deleteMultipleTasks(app)
 deleteOneTask(app)
 
 
-// User change password / name / sruname / password or delete account
+// User change password, username or delete account
 editUsersCredentials(app)
-getAll(User, app)
-deleteOne(User, app)
+deleteOneUser(app)
 
 sequelize.sync({ alter: true }).then(() => {
     associateUsersAndTasks()
@@ -44,7 +41,7 @@ sequelize.sync({ alter: true }).then(() => {
 })
 
 
-// run the server
+// Run the server
 app.listen(3000, () => {
     console.log('server is running.')
 })
