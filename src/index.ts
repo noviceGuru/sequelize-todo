@@ -12,6 +12,7 @@ import { requireJwtMiddleware } from './middlewares/checkToken'
 import { createATask } from './tasksRequests/createATask'
 import { editATask } from './tasksRequests/editATask'
 import { deleteMultipleTasks, deleteOneTask } from './tasksRequests/deleteTask'
+import { editUsersCredentials } from './signUpInOut/editOneUser'
 
 const app = express()
 app.use(express.json())
@@ -24,7 +25,7 @@ signIn(app)
 // MIDDLEWARE to check the token.
 app.use(requireJwtMiddleware)
 
-//Tasks crud
+//Tasks crud for the authenticated user
 getAllTasks(app)
 createATask(app)
 editATask(app)
@@ -33,7 +34,7 @@ deleteOneTask(app)
 
 
 // User change password / name / sruname / password or delete account
-
+editUsersCredentials(app)
 getAll(User, app)
 deleteOne(User, app)
 
