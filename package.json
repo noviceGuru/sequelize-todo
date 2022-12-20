@@ -2,7 +2,7 @@
   "name": "sequelize-ex",
   "version": "1.0.0",
   "description": "an exercise with sequelize",
-  "main": "index.js",
+  "main": "./build/index.js",
   "scripts": {
     "start": "node --watch ./build/index.js"
   },
