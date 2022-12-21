@@ -1,4 +1,6 @@
 import express from 'express'
+import helmet from 'helmet'
+import dotenv from 'dotenv'
 import { sequelize } from './database'
 
 import { signUp } from './signUpInOut/signUp'
@@ -12,8 +14,11 @@ import { deleteMultipleTasks, deleteOneTask } from './tasksRequests/deleteTask'
 import { editUsersCredentials } from './signUpInOut/editOneUser'
 import { deleteOneUser } from './signUpInOut/deleteOneUser'
 
+dotenv.config()
+
 const app = express()
 app.use(express.json())
+app.use(helmet()) // To protect the routes
 
 // SIGNUP AND SIGNIN
 // put before middlewares, since don't need a valid token.
