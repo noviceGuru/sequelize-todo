@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Task = exports.User = void 0;
+var user_1 = require("./user");
+var tasks_1 = require("./tasks");
+var user_2 = require("./user");
+Object.defineProperty(exports, "User", { enumerable: true, get: function () { return user_2.User; } });
+var tasks_2 = require("./tasks");
+Object.defineProperty(exports, "Task", { enumerable: true, get: function () { return tasks_2.Task; } });
+exports.default = [user_1.User, tasks_1.Task];
