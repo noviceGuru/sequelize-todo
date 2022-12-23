@@ -1,6 +1,7 @@
 import express from 'express'
 import helmet from 'helmet'
 import dotenv from 'dotenv'
+import logger from 'morgan'
 import { sequelize } from './database'
 
 import { signUp } from './signUpInOut/signUp'
@@ -19,6 +20,7 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(helmet()) // To protect the routes
+app.use(logger('dev')) // To make logs more beautiful
 
 // SIGNUP AND SIGNIN
 // put before middlewares, since don't need a valid token.

@@ -4,6 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var helmet_1 = __importDefault(require("helmet"));
+var dotenv_1 = __importDefault(require("dotenv"));
+var morgan_1 = __importDefault(require("morgan"));
 var database_1 = require("./database");
 var signUp_1 = require("./signUpInOut/signUp");
 var singIn_1 = require("./signUpInOut/singIn");
@@ -15,8 +18,11 @@ var editATask_1 = require("./tasksRequests/editATask");
 var deleteTask_1 = require("./tasksRequests/deleteTask");
 var editOneUser_1 = require("./signUpInOut/editOneUser");
 var deleteOneUser_1 = require("./signUpInOut/deleteOneUser");
+dotenv_1.default.config();
 var app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use((0, helmet_1.default)()); // To protect the routes
+app.use((0, morgan_1.default)('dev')); // To make logs more beautiful
 // SIGNUP AND SIGNIN
 // put before middlewares, since don't need a valid token.
 (0, signUp_1.signUp)(app);
